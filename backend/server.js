@@ -11,6 +11,7 @@ const cors = require('cors');
 const multer = require('multer');
 require('colors');
 const path = require('path');
+const { fileURLToPath } = require('url');
 
 dotenv.config();
 
@@ -21,7 +22,10 @@ db()
             console.log(`Server aperto nella porta ${process.env.PORT}`.green.underline)
         });
     })
-    .catch(err => console.log(`Error in MongoDB, ${err}`.red))
+    .catch(err => console.log(`Error in MongoDB, ${err}`.red));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
