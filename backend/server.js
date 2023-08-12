@@ -10,8 +10,6 @@ const stripeRoute = require('./Routes/stripe.route');
 const cors = require('cors');
 const multer = require('multer');
 require('colors');
-const path = require('path');
-const { fileURLToPath } = require('url');
 
 dotenv.config();
 
@@ -24,25 +22,23 @@ db()
     })
     .catch(err => console.log(`Error in MongoDB, ${err}`.red));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/category', categoryRoute);
 app.use('/api/v1/product', productRoute);
 app.use('/api/v1/stripe', stripeRoute);
 
-app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
-})
+app.get('/', (req, res, next) => {
+    res.send({
+        message: 'Welcome'
+    });
+});
 
 app.use((req, res, next) => {
     next(httpErrors(404, 'Non trovato'));
