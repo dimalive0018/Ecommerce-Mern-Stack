@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply box-border;
+        @apply m-0;
+        scroll-behavior: smooth;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+
+    body {
+        background-color: #FFFAFA;
+    }
+
+    input[type='number'] {
+        -moz-appearance:textfield;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    textarea {
+        resize: none;
+    }
+}
