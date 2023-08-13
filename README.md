@@ -64,11 +64,5 @@ Questo codice rappresenta un'applicazione ecommerce per smartphone, tablet e lap
 - npm (gestore pacchetti di Node.js)
 - Un browser web moderno
 
-## Installazione
-
-- git clone https://github.com/tuonome/n1-e-commerce.git 
-- cd n1-e-commerce
-- npm install
-
 ## Autore
 * [Livio Dimola](https://github.com/liviodimola) - *novello Full Stack Developer*
