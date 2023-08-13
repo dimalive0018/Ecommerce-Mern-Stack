@@ -4,6 +4,7 @@
   <h2 align="center">E-commerce per smartphone, tablet and laptop</h2>
 </p>
 
+![Screen Shot](https://i.ibb.co/XxPvygN/ecommercebanne.png)
 Trovi il progetto [qui](https://n1eco.netlify.app/)
 
 ![Forks](https://img.shields.io/github/forks/liviodimola/Ecommerce-Mern-Stack?style=social) ![Stargazers](https://img.shields.io/github/stars/liviodimola/Ecommerce-Mern-Stack?style=social) 
