@@ -66,9 +66,9 @@ Questo codice rappresenta un'applicazione ecommerce per smartphone, tablet e lap
 
 ## Installazione
 
--1 git clone https://github.com/tuonome/n1-e-commerce.git 
--2 cd n1-e-commerce
--3 npm install
+- git clone https://github.com/tuonome/n1-e-commerce.git 
+- cd n1-e-commerce
+- npm install
 
 ## Autore
 * [Livio Dimola](https://github.com/liviodimola) - *novello Full Stack Developer*
