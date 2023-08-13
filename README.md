@@ -45,42 +45,30 @@ Benvenuti nel repository del progetto N1 E-commerce! Questo progetto è un'appli
 * MongoDB (database)
 * Mongo Compass (database management)
 * Postman (API testing)
+  
 ## Caratteristiche principali
 Questo codice rappresenta un'applicazione per gestire ordini, prodotti e utenti. Il progetto segue l'architettura MVC.
 
 <h3>Le principali funzionalità dell'applicazione includono:</h3>
 
-Visualizzazione di prodotti con dettagli, immagini e prezzi.
-Aggiunta e gestione del carrello per effettuare acquisti.
-Autenticazione utente per l'accesso e la registrazione.
-Pagine di profilo utente e amministratore.
-Gestione di ordini e prodotti per gli amministratori.
-Ricerca di prodotti per nome e categoria.
-Ottimizzazione SEO per una migliore indicizzazione sui motori di ricerca.
+- Visualizzazione di prodotti con dettagli, immagini e prezzi.
+- Aggiunta e gestione del carrello per effettuare acquisti.
+- Autenticazione utente per l'accesso e la registrazione.
+- Pagine di profilo utente e amministratore.
+- Gestione di ordini e prodotti per gli amministratori.
+- Ricerca di prodotti per nome e categoria.
+- Ottimizzazione SEO per una migliore indicizzazione sui motori di ricerca.
 
 ## Prerequisiti
-Node.js
-npm (gestore pacchetti di Node.js)
-Un browser web moderno
+- Node.js
+- npm (gestore pacchetti di Node.js)
+- Un browser web moderno
 
 ## Installazione
 
-Installazione
-Clonare il repository su una directory locale:
-
-bash
-Copy code
-git clone https://github.com/tuonome/n1-e-commerce.git
-Navigare nella directory del progetto:
-
-bash
-Copy code
-cd n1-e-commerce
-Installare le dipendenze del progetto utilizzando npm:
-
-bash
-Copy code
-npm install
+-1 git clone https://github.com/tuonome/n1-e-commerce.git 
+-2 cd n1-e-commerce
+-3 npm install
 
 ## Autore
 * [Livio Dimola](https://github.com/liviodimola) - *novello Full Stack Developer*
