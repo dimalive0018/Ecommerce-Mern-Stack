@@ -47,7 +47,7 @@ Benvenuti nel repository del progetto N1 E-commerce! Questo progetto è un'appli
 * Postman (API testing)
   
 ## Caratteristiche principali
-Questo codice rappresenta un'applicazione per gestire ordini, prodotti e utenti. Il progetto segue l'architettura MVC.
+Questo codice rappresenta un'applicazione ecommerce per smartphone, tablet e laptop.
 
 <h3>Le principali funzionalità dell'applicazione includono:</h3>
 
