@@ -65,4 +65,4 @@ Questo codice rappresenta un'applicazione ecommerce per smartphone, tablet e lap
 - Un browser web moderno
 
 ## Autore
-* [Livio Dimola](https://github.com/liviodimola) - *novello Full Stack Developer*
+* [Livio Dimola](https://github.com/liviodimola) - *Full Stack Developer*
