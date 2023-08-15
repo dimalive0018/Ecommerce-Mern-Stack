@@ -10,11 +10,23 @@ export default function () {
     const [cart, setCart] = useCart();
     const [spinner, setSpinner] = useState(false);
     const navigate = useNavigate();
+    const [offset, setOffset] = useState(6);
+    const handleScroll = (e) => {
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + 6);
+        }
+    };
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => {
             setSpinner(false);
         }, 500);
+        setTimeout(() => {
+            window.addEventListener('scroll', handleScroll);
+        }, 2000);
     }, [])
     return (
         <>
@@ -27,7 +39,7 @@ export default function () {
                 )}
                 {spinner === false && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-5">
-                        {value.results.map((product) => (
+                        {value.results.slice(0, offset).map((product) => (
                             <div className="bg-white rounded-lg shadow-md p-4 m-5" key={product._id}>
                                 <h4 className="text-lg font-semibold mb-2">{product.name}</h4>
                                 <img className="rounded-md mb-2 w-60 h-60" src={`${import.meta.env.VITE_APP_API_PHOTO}${product._id}`} alt='Product photo'></img>

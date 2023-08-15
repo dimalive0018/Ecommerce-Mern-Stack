@@ -9,6 +9,7 @@ export default function AdminOrders() {
     const [status] = useState(['Not processed', 'Processing', 'Shipped', 'Delivered']);
     const [orders, setOrders] = useState([]);
     const [spinner, setSpinner] = useState(false);
+    const [offset, setOffset] = useState(4);
     const getOrders = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_ALL_ORDERS}`);
@@ -28,13 +29,22 @@ export default function AdminOrders() {
             console.error(error.message);
             toast.error(error.message);
         }
-    }
+    };
+    const handleScroll = (e) => {
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + 4);
+        }
+    };
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => {
             getOrders();
             setSpinner(false);
         }, 500);
+        window.addEventListener('scroll', handleScroll);
     }, []);
     return (
         <>
@@ -45,7 +55,7 @@ export default function AdminOrders() {
                 <div className="flex flex-col items-center my-5">
                     <h3 className="text-center text-2xl font-bold mt-5 mb-4">User Orders</h3>
                     <div className="w-full overflow-x-auto">
-                        {orders?.map((order, index) => {
+                        {orders?.slice(0, offset)?.map((order, index) => {
                             return (
                                 <div className="mb-8" key={index}>
                                     <table className="w-full text-left border-collapse table-auto">

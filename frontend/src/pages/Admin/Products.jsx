@@ -21,6 +21,7 @@ export default function Products() {
     const [photo, setPhoto] = useState('');
     const [idUp, setIdUp] = useState('');
     const [spinner, setSpinner] = useState(false);
+    const [offset, setOffset] = useState(8);
     const allProducts = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_PRODUCTS}`);
@@ -118,12 +119,23 @@ export default function Products() {
             setOpen(true);
         };
     };
+    const handleScroll = (e) => {
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + 6);
+        }
+    };
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => {
             allProducts();
             setSpinner(false);
         }, 1000);
+        setTimeout(() => {
+            window.addEventListener('scroll', handleScroll);
+        }, 1500);
     }, []);
     useEffect(() => {
         allCategories();
@@ -149,7 +161,7 @@ export default function Products() {
                                 </tr>
                             </thead>
                             <tbody className='text-center'>
-                                {products.map((product) => (
+                                {products.slice(0, offset).map((product) => (
                                     <tr key={product._id}>
                                         <td className='border px-4 py-2 max-[340px]:text-xs'>
                                             <NavLink to={`/product/${product.slug}`}>

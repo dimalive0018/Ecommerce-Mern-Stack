@@ -13,6 +13,7 @@ export default function Category() {
     const params = useParams();
     const navigate = useNavigate();
     const [spinner, setSpinner] = useState(false);
+    const [offset, setOffset] = useState(6);
     const productsByCategory = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_PRODUCTS_BY_CATEGORY}${params.slug}`)
@@ -28,12 +29,23 @@ export default function Category() {
             console.error(error.message);
         }
     };
+    const handleScroll = (e) => {
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + 6);
+        }
+    };
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => {
             productsByCategory();
             setSpinner(false);
         }, 500);
+        setTimeout(() => {
+            window.addEventListener('scroll', handleScroll);
+        }, 3000);
     }, [params.slug])
     return (
         <>
@@ -47,7 +59,7 @@ export default function Category() {
                     )}
                     {spinner === false && (
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-                            {products.map((product) => (
+                            {products.slice(0, offset).map((product) => (
                                 <div className='flex flex-col items-center p-5 border rounded-lg shadow-md' key={product._id}>
                                     <h4 className='text-lg font-medium mb-3'>{product.name}</h4>
                                     <img className='w-32 h-32 object-cover rounded-full mb-3' src={`${import.meta.env.VITE_APP_API_PHOTO}${product._id}`} alt='Product photo'></img>

@@ -9,6 +9,7 @@ export default function Orders() {
     const [orders, setOrders] = useState([]);
     const [auth] = useAuth();
     const [spinner, setSpinner] = useState(false);
+    const [offset, setOffset] = useState(4);
     const getOrders = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_GET_ORDERS}`);
@@ -30,13 +31,22 @@ export default function Orders() {
         } catch (error) {
             console.error(error.message);
         }
-    }
+    };
+    const handleScroll = (e) => {
+        if (
+            window.innerHeight + e.target.documentElement.scrollTop + 1 >=
+            e.target.documentElement.scrollHeight
+        ) {
+            setOffset((prevOffset) => prevOffset + 4);
+        }
+    };
     useEffect(() => {
         setSpinner(true);
         setTimeout(() => {
             getOrders();
             setSpinner(false);
         }, 500);
+        window.addEventListener('scroll', handleScroll);
     }, []);
     return (
         <>
@@ -47,7 +57,7 @@ export default function Orders() {
                 <div className='my-5'>
                     <h3 className='text-center text-2xl font-bold mb-4'>Orders</h3>
                     <div>
-                        {orders?.map((order, index) => {
+                        {orders?.slice(0, offset)?.map((order, index) => {
                             return (
                                 <div className='mb-4' key={index}>
                                     <div className='flex flex-col items-center justify-center'>
