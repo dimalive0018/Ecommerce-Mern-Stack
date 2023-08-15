@@ -68,8 +68,8 @@ exports.createCheckoutSession = async (req, res, next) => {
             ],
             line_items,
             mode: 'payment',
-            success_url: `${process.env.CLIENT_URL}/`,
-            cancel_url: `${process.env.CLIENT_URL}/cart`,
+            success_url: `${process.env.CLIENT_URL}`,
+            cancel_url: `${process.env.CLIENT_URL}`,
         });
         const newOrder = new Order({
             products: req.body.filteredCartProducts.map(product => product._id),
