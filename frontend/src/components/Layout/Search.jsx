@@ -3,6 +3,7 @@ import { useSearch } from '../../context/Search';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import 'flowbite';
+import 'flowbite-react';
 import api from '../../api';
 
 export default function Search() {

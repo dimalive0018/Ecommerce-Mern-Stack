@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Product = require('../Models/product.model');
 const slugify = require('slugify');
 const fs = require('fs');
-const { findProducts, findProduct, findPhoto, findAndDeleteProduct, findAndUpdateProduct, findAndFilter, searchProducts, similarProducts, productsByCategory } = require('../Data/product.data');
+const { findProducts, findProduct, findPhoto, findAndDeleteProduct, findAndUpdateProduct, findAndFilter, searchProducts, similarProducts, productsByCategory, searchProductsAdmin } = require('../Data/product.data');
 const { findCategory } = require('../Data/category.data');
 
 module.exports = {

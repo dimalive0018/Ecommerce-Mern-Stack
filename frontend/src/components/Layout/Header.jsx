@@ -6,6 +6,8 @@ import toast from 'react-hot-toast';
 import Search from './Search';
 import CategoriesMenu from './Categories';
 import CartBadge from './Cart';
+import 'flowbite';
+import 'flowbite-react';
 
 export default function Header() {
     const [auth, setAuth] = useAuth();

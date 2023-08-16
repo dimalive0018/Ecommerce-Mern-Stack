@@ -161,7 +161,7 @@ export default function Products() {
                                 </tr>
                             </thead>
                             <tbody className='text-center'>
-                                {products.slice(0, offset).map((product) => (
+                                {products?.slice(0, offset).map((product) => (
                                     <tr key={product._id}>
                                         <td className='border px-4 py-2 max-[340px]:text-xs'>
                                             <NavLink to={`/product/${product.slug}`}>

@@ -119,9 +119,9 @@ export default function Home() {
                                     <button onClick={resetFilters} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reset filter</button>
                                 </Form>
                             </div>
-                            <div className='flex flex-wrap justify-center items-center m-10'>
+                            <div className='flex flex-wrap justify-center items-center m-2'>
                                 {products.slice(0, offset).map((product) => (
-                                    <div className="max-w-xs rounded overflow-hidden shadow-lg m-5" key={product._id}>
+                                    <div className="max-w-xs rounded overflow-hidden shadow-lg m-2" key={product._id}>
                                         <img className="w-60 h-60" src={`${import.meta.env.VITE_APP_API_PHOTO}${product._id}`} alt="Product photo" />
                                         <div className="px-6 py-4">
                                             <h4 className="font-bold text-xl mb-2">{product.name.substring(0, 30)}</h4>

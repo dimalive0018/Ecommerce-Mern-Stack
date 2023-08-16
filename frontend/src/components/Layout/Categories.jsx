@@ -1,6 +1,7 @@
 import React from 'react'
 import useCategory from '../../hooks/Categories';
 import 'flowbite';
+import 'flowbite-react';
 import { NavLink } from 'react-router-dom';
 
 export default function CategoriesMenu() {

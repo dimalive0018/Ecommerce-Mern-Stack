@@ -1,7 +1,7 @@
 const express = require('express');
 const uploadSetting = require('../Multer/upload.setting');
 const { signIn, admin } = require('../Middlewares/auth.middleware');
-const { createProduct, getProducts, getProduct, getPhoto, deleteProduct, updateProduct, productFilter, productsSearch, similarProducts, getProductsByCategory, braintreeToken, braintreePayment } = require('../Controllers/product.controller');
+const { createProduct, getProducts, getProduct, getPhoto, deleteProduct, updateProduct, productFilter, productsSearch, similarProducts, getProductsByCategory, adminSearchProducts } = require('../Controllers/product.controller');
 const dotenv = require('dotenv');
 
 dotenv.config();
