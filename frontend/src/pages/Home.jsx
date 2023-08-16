@@ -15,7 +15,7 @@ export default function Home() {
     const [spinner, setSpinner] = useState(false);
     const [form] = Form.useForm();
     const navigate = useNavigate();
-    const [offset, setOffset] = useState(8);
+    const [offset, setOffset] = useState(5);
     const allProducts = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_PRODUCTS}`);
@@ -69,7 +69,7 @@ export default function Home() {
             window.innerHeight + e.target.documentElement.scrollTop + 1 >=
             e.target.documentElement.scrollHeight
         ) {
-            setOffset((prevOffset) => prevOffset + 8);
+            setOffset((prevOffset) => prevOffset + 10);
         }
     };
     useEffect(() => {
