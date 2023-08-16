@@ -46,8 +46,8 @@ export default function () {
                                 <p className="text-gray-700 mb-2">{product.description.substring(0, 25)}...</p>
                                 <p className="text-gray-700 mb-2">Price: {parseFloat(product.price).toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}</p>
                                 <div className="flex justify-between">
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded max-[340px]:text-xs" onClick={() => navigate(`/product/${product.slug}`)}>Dettagli</button>
-                                    <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded max-[340px]:text-xs" onClick={() => { setCart([...cart, product]); toast.success('Prodotto aggiunto al carrello con successo'); localStorage.setItem('cart', JSON.stringify([...cart, product])) }}>Aggiungi al carrello</button>
+                                    <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded max-[340px]:text-xs" onClick={() => navigate(`/product/${product.slug}`)}>More details</button>
+                                    <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded max-[340px]:text-xs" onClick={() => { setCart([...cart, product]); toast.success('Prodotto aggiunto al carrello con successo'); localStorage.setItem('cart', JSON.stringify([...cart, product])) }}>Add to cart</button>
                                 </div>
                             </div>
                         ))}

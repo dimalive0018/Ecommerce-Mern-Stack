@@ -86,7 +86,7 @@ export default function Product() {
                                                 <p className='text-center text-sm text-gray-600 mb-2'>{product.description.substring(0, 25)}...</p>
                                                 <p className='text-center text-sm text-gray-600 mb-2'>Price: {parseFloat(product.price).toLocaleString('it-IT', { style: 'currency', currency: 'EUR' })}</p>
                                                 <div className='flex justify-center space-x-2'>
-                                                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md' onClick={() => navigate(`/product/${product.slug}`)}>More Details</button>
+                                                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded-md' onClick={() => navigate(`/product/${product.slug}`)}>More details</button>
                                                     <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded-md' onClick={() => { setCart([...cart, product]); toast.success('Product added to cart successfully'); localStorage.setItem('cart', JSON.stringify([...cart, product])) }}>Add to cart</button>
                                                 </div>
                                             </div>
