@@ -3,15 +3,31 @@ import LogoImage from './Logo';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Auth';
 import toast from 'react-hot-toast';
-import Search from './Search';
 import CategoriesMenu from './Categories';
 import CartBadge from './Cart';
+import { useSearch } from '../../context/Search';
+import api from '../../api';
 import 'flowbite';
 import 'flowbite-react';
 
 export default function Header() {
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
+    const [values, setValues] = useSearch();
+    const searchProducts = async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await api.get(`${import.meta.env.VITE_APP_API_PRODUCTS_SEARCH}${values.key}`);
+            if (data.status === 404) {
+                return toast.error(data.message);
+            };
+            setValues({ ...values, results: data });
+            navigate('/search');
+        } catch (error) {
+            toast.error(error.message);
+            console.error(error.message);
+        }
+    };
     const signout = () => {
         setAuth({
             ...auth,
@@ -31,11 +47,21 @@ export default function Header() {
                 <div class="flex md:order-2">
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >
                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                         <span class="sr-only">Search</span>
                     </button>
-                    <Search />
+                    <form onSubmit={searchProducts}>
+                        <div class="relative hidden md:block">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                                <span class="sr-only">Search</span>
+                            </div>
+                            <input value={values.key} onChange={(e) => setValues({ ...values, key: e.target.value })} type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                        </div>
+                    </form>
                     <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -50,7 +76,9 @@ export default function Header() {
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                        <form onSubmit={searchProducts}>
+                            <input value={values.key} onChange={(e) => setValues({ ...values, key: e.target.value })} type="text" id="search-navbar" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
+                        </form>
                     </div>
                     <ul class="flex flex-col items-center p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-[#FFFAFA] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li className='m-3'>
