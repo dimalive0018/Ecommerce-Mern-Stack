@@ -8,8 +8,6 @@ import CartBadge from './Cart';
 import { useSearch } from '../../context/Search';
 import api from '../../api';
 import { Navbar } from 'flowbite-react';
-import 'flowbite';
-import 'flowbite-react';
 
 export default function Header() {
     const [auth, setAuth] = useAuth();
