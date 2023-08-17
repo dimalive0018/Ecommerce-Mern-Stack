@@ -99,26 +99,26 @@ export default function Home() {
                     <h2 className='text-xl sm:text-3xl font-bold font-sans'>E-commerce for smartphone, tablet and laptop</h2>
                 </div>
                 <div className="flex flex-col items-center m-10">
+                    <div className='flex flex-col md:flex-row items-center justify-around w-full'>
+                        <h3 className='text-xl sm:text-3xl font-bold m-5'>All Products</h3>
+                        <Form className='flex flex-col items-center m-5' form={form}>
+                            <div className='flex flex-row items-center'>
+                                <div className='mr-10 flex flex-col md:flex-row justify-center'>
+                                    {categories.map((category) => (
+                                        <Form.Item key={category._id} name={`category-${category._id}`}>
+                                            <Checkbox className='text-sm md:text-base' onChange={(e) => filterCategory(e.target.checked, category._id)}>{category.name}</Checkbox>
+                                        </Form.Item>
+                                    ))}
+                                </div>
+                            </div>
+                            <button onClick={resetFilters} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reset filter</button>
+                        </Form>
+                    </div>
                     {spinner === true && (
                         <Spinner />
                     )}
                     {spinner === false && (
                         <>
-                            <div className='flex flex-col md:flex-row items-center justify-around w-full'>
-                                <h3 className='text-xl sm:text-3xl font-bold m-5'>All Products</h3>
-                                <Form className='flex flex-col items-center m-5' form={form}>
-                                    <div className='flex flex-row items-center'>
-                                        <div className='mr-10 flex flex-col md:flex-row justify-center'>
-                                            {categories.map((category) => (
-                                                <Form.Item key={category._id} name={`category-${category._id}`}>
-                                                    <Checkbox className='text-sm md:text-base' onChange={(e) => filterCategory(e.target.checked, category._id)}>{category.name}</Checkbox>
-                                                </Form.Item>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <button onClick={resetFilters} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Reset filter</button>
-                                </Form>
-                            </div>
                             <div className='flex flex-wrap justify-center items-center m-2'>
                                 {products.slice(0, offset).map((product) => (
                                     <div className="max-w-xs rounded overflow-hidden shadow-lg m-2" key={product._id}>
