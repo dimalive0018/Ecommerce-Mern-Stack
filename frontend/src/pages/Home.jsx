@@ -15,7 +15,7 @@ export default function Home() {
     const [spinner, setSpinner] = useState(false);
     const [form] = Form.useForm();
     const navigate = useNavigate();
-    const [offset, setOffset] = useState(5);
+    const [offset, setOffset] = useState(10);
     const allProducts = async () => {
         try {
             const { data } = await api.get(`${import.meta.env.VITE_APP_API_PRODUCTS}`);
