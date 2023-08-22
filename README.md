@@ -5,7 +5,7 @@
 </p>
 
 ![Screen Shot](https://i.ibb.co/0CZ27y6/sito-definitivo.png)
-Trovi il progetto [qui](https://n1eco.onrender.com/)
+Trovi il progetto [qui](https://n1eco.netlify.app/)
 
 ![Forks](https://img.shields.io/github/forks/liviodimola/Ecommerce-Mern-Stack?style=social) ![Stargazers](https://img.shields.io/github/stars/liviodimola/Ecommerce-Mern-Stack?style=social) 
 
